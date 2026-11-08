@@ -23,6 +23,8 @@ import pandas as pd  # noqa: E402
 ALGORITHMS = ["PASS_PER_ITEM", "UNTIL_NO_CHANGE", "WHILE_NEEDED"]
 ORDERS = ["SORTED", "REVERSED", "RANDOM", "NEARLY_SORTED"]
 COLORS = {"PASS_PER_ITEM": "#1f77b4", "UNTIL_NO_CHANGE": "#ff7f0e", "WHILE_NEEDED": "#2ca02c"}
+# Different markers and line styles, so lines with (almost) equal values stay visible
+STYLES = {"PASS_PER_ITEM": ("o", "-"), "UNTIL_NO_CHANGE": ("s", "--"), "WHILE_NEEDED": ("^", ":")}
 KEYS = ["algorithm", "size", "order"]
 OUT = Path("results/analysis")
 
@@ -50,6 +52,8 @@ def plot_boxplots(data):
                              medianprops={"color": "black"})
             for patch in box["boxes"]:
                 patch.set_facecolor(COLORS[algorithm])
+                patch.set_edgecolor(COLORS[algorithm])  # flat boxes still show their colour
+                patch.set_linewidth(2)
             ax.plot([], [], color=COLORS[algorithm], linewidth=8, label=algorithm)
         ax.set_xticks(range(len(ORDERS)))
         ax.set_xticklabels(ORDERS)
@@ -70,7 +74,9 @@ def plot_scaling(stats):
     for ax, order in zip(axes, ORDERS):
         for algorithm in ALGORITHMS:
             line = stats[(stats["order"] == order) & (stats["algorithm"] == algorithm)].sort_values("size")
-            ax.plot(line["size"], line["median"], marker="o", color=COLORS[algorithm], label=algorithm)
+            marker, linestyle = STYLES[algorithm]
+            ax.plot(line["size"], line["median"], marker=marker, linestyle=linestyle, markersize=7,
+                    markerfacecolor="none", markeredgewidth=1.5, color=COLORS[algorithm], label=algorithm)
         ax.set_xscale("log")
         ax.set_yscale("log")
         ax.set_title(order)
