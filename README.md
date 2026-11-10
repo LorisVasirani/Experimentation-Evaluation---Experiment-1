@@ -1,8 +1,8 @@
 # Bubble Sort Performance Experiment
 
-Experiment 1, Experimentation & Evaluation 2026 (USI).
+Experiment 1, Experimentation & Evaluation 2026.
 
-We measured the execution time of three bubble sort versions (PassPerItem, UntilNoChange,
+I measured the execution time of three bubble sort versions (PassPerItem, UntilNoChange,
 WhileNeeded) on arrays of 10, 100, 1,000 and 10,000 numbers in four initial orders
 (sorted, reversed, random, almost sorted). Each of the 48 conditions was measured 150 times
 (30 measurements × 5 runs) with `System.nanoTime()`.
@@ -11,12 +11,12 @@ WhileNeeded) on arrays of 10, 100, 1,000 and 10,000 numbers in four initial orde
 
 | Path | Content |
 |---|---|
-| `src/exp01/` | The three provided algorithms + `Sorter` interface (unmodified) and our measurement program `BubbleBenchmark.java` |
+| `src/exp01/` | The three provided algorithms + `Sorter` interface (unmodified) and my measurement program `BubbleBenchmark.java` |
 | `run_experiment.sh` | Compiles the code and runs the experiment 5 times |
-| `analysis/analyze.py` | Computes the statistics and creates the plots |
+| `analysis/analyze.py` | Computes the statistics and creates the graph |
 | `results/run1.csv` … `run5.csv` | Raw measurements (one row per batch) |
-| `results/environment.txt` | Computer and Java details of our run |
-| `results/analysis/` | Statistics tables and plots used in the report |
+| `results/environment.txt` | Computer and Java details of my run |
+| `results/analysis/` | Statistics tables and graph used in the report |
 
 ## How to reproduce
 
