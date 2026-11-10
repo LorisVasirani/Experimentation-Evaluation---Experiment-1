@@ -1,9 +1,8 @@
 """
 Analysis of the Bubble Algorithm Library experiment.
 
-Only uses the descriptive statistics and graphs explained in "How to Design and
-Report Experiments" (Chapter 4 and Chapter 9): median, range (min to max), mean,
-standard deviation, and a bar chart.
+Descriptive statistics used: median, range (min to max), mean and standard
+deviation; the medians are shown in a bar chart.
 
 Reads results/run*.csv and writes to results/analysis/:
   - descriptive_stats.csv  n, median, min, max, range, mean, standard deviation per condition
@@ -37,7 +36,7 @@ OUT = Path("results/analysis")
 
 
 def describe(times):
-    """Descriptive statistics (Chapter 4) of the execution times of one condition (µs)."""
+    """Descriptive statistics of the execution times of one condition (µs)."""
     return pd.Series({
         "n": len(times), "median": times.median(), "min": times.min(), "max": times.max(),
         "range": times.max() - times.min(), "mean": times.mean(), "sd": times.std(),
@@ -50,7 +49,7 @@ def fmt(value):
 
 
 def write_median_range_tables(stats):
-    """One Markdown table per array size: median and range (min to max), as suggested in Chapter 9."""
+    """One Markdown table per array size: median and range (min to max)."""
     lines = []
     for number, size in enumerate(SIZES, start=1):
         unit, factor = UNITS[size]
