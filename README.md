@@ -21,7 +21,7 @@ WhileNeeded) on arrays of 10, 100, 1,000 and 10,000 numbers in four initial orde
 Requirements: Java 25 and Python 3.
 
 ```bash
-./run_experiment.sh                     # about 10 minutes
+./run_experiment.sh                     # about 8 minutes
 python3 -m venv .venv
 .venv/bin/pip install pandas matplotlib
 .venv/bin/python analysis/analyze.py    # writes results/analysis/

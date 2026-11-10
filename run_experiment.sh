@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Runs the whole experiment (about 10 minutes): compiles the code and runs the
+# Runs the whole experiment (about 8 minutes): compiles the code and runs the
 # measurement program 5 times, each in a new JVM. Output goes to results/.
 #
 set -euo pipefail
